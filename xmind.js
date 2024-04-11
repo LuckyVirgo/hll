@@ -22,7 +22,7 @@ if (vip.test($request.url)) {
     chxm1023 = {
         "license" : {
             "status" : "sub",
-            "expireTime" : 4092599349000
+            "expireTime" : 253402185599000
         },
         "_code" : 200,
         "raw_data" : "GfxYgAqnrQ\/ggD9UwqnZyAj6FKnopXzM8s5m3eZLOsmVr4FwCzv41qTmgi\/u72cv+jpaAoljaEPti1twzOS7X7KUPY1KNJ2xalbS7SXbvFHSvs21QXjaUtIOkeJWAl4\/vHl4IvMeHTBVqD8mFCXOmvnBPLRMAJEPgHEJYF1InvQ="};
