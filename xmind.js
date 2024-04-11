@@ -1,36 +1,43 @@
 /*************************************
 
- 项目名称：Xmind-思维导图
- 使用说明：先登录Xmind账号在恢复购买
+项目名称：Notability
 
- **************************************
+**************************************
 
- [rewrite_local]
- ^https?:\/\/(?:www\.)?xmind\..*\/.+\/(devices|token\/.+) url script-response-body https://raw.githubusercontent.com/LuckyVirgo/hll/main/xmind.js
+[rewrite_local]
+^https?:\/\/notability\.com\/(global|subscriptions) url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/notability.js
 
- [mitm]
- hostname = *xmind.*
+[mitm]
+hostname = notability.com
 
- *************************************/
+*************************************/
 
 
 var chxm1023 = JSON.parse($response.body);
-const vip = /https:\/\/www\.xmind\.cn\/_res\/devices/;
-const token = /https:\/\/xmind\.cn\/_res\/token\/.+/;
 
-if (vip.test($request.url)) {
-    chxm1023 = {
-        "license" : {
-            "status" : "sub",
-            "expireTime" : 253402128000000
-        },
-        "_code" : 200,
-        "raw_data" : "GfxYgAqnrQ\/ggD9UwqnZyAj6FKnopXzM8s5m3eZLOsmVr4FwCzv41qTmgi\/u72cv+jpaAoljaEPti1twzOS7X7KUPY1KNJ2xalbS7SXbvFHSvs21QXjaUtIOkeJWAl4\/vHl4IvMeHTBVqD8mFCXOmvnBPLRMAJEPgHEJYF1InvQ="};
-}
-
-if (token.test($request.url)) {
-    chxm1023.expireDate = 253402128000;
-    chxm1023.token = "f50633ea8eb04cbb85962b99c47045d7AjOobEGo";
-}
+chxm1023 = {
+   "data" : {
+     "processAppleReceipt" : {
+       "error" : 0,
+       "subscription" : {
+         "productId" : "com.gingerlabs.Notability.premium_subscription",
+         "originalTransactionId" : "570001184068302",
+         "tier" : "premium",
+         "refundedDate" : null,
+         "refundedReason" : null,
+         "isInBillingRetryPeriod" : false,
+         "expirationDate" : "9999-12-31T23:59:59.999Z",
+         "gracePeriodExpiresAt" : null,
+         "overDeviceLimit" : false,
+         "expirationIntent" : null,
+         "__typename" : "AppStoreSubscription",
+         "user" : null,
+         "status" : "canceled",
+         "originalPurchaseDate" : "2022-09-09T09:09:09.000Z"
+       },
+       "__typename" : "SubscriptionResult"
+    }
+  }
+};
 
 $done({body : JSON.stringify(chxm1023)});
