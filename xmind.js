@@ -1,11 +1,11 @@
 /*************************************
 
-项目名称：Notability
+名称：Notability
 
 **************************************
 
 [rewrite_local]
-^https?:\/\/notability\.com\/(global|subscriptions) url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/notability.js
+^https?:\/\/notability\.com\/(global|subscriptions) url script-response-body https://github.com/LuckyVirgo/hll/edit/main/nb9999.js
 
 [mitm]
 hostname = notability.com
@@ -13,9 +13,9 @@ hostname = notability.com
 *************************************/
 
 
-var chxm1023 = JSON.parse($response.body);
+var nb9999= JSON.parse($response.body);
 
-chxm1023 = {
+nb9999 = {
    "data" : {
      "processAppleReceipt" : {
        "error" : 0,
@@ -40,4 +40,4 @@ chxm1023 = {
   }
 };
 
-$done({body : JSON.stringify(chxm1023)});
+$done({body : JSON.stringify(nb9999)});
